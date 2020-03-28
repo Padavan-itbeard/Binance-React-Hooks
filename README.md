@@ -6,10 +6,12 @@
 Добавить возможность переключения валютных пар(ETC-USDT, XRP-USDT,BTS_USDT)
 ## Примерный вид приложения:
 
-
+![Пример](https://github.com/Padavan-itbeard/Binance-React-Hooks/blob/master/public/test.jpg)
 
 
 ## Binance API:
 https://github.com/binance-exchange/binance-official-api-docs/blob/master/rest-api.md#order-book
 ## Binance Socket  Streams API:
 https://github.com/binance-exchange/binance-official-api-docs/blob/master/web-socket-streams.md
+
+wss://stream.binance.com:9443
