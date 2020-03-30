@@ -1,18 +1,21 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import OrderBook from '../OrderBook/OrderBook';
+import { setIntrvl, setPair } from '../actions/actions';
 
 const Select = () => {
   const optionsPair = ['ETC/USDT', 'XRP/USDT', 'BTS/USDT'];
   const optionsInterv = ['1000ms', '100ms'];
-  const [pair, setPair] = useState('');
-  const [interval, setInterval] = useState('1000ms');
+  const pair = useSelector((state) => state.pair);
+  const interval = useSelector((state) => state.interval);
+  const dispatch = useDispatch();
 
   return (
     <div style={{ textAlign: 'center' }}>
       <span>Выберите пару: </span>
       <select
         value={pair}
-        onChange={(event) => setPair(event.target.value)}
+        onChange={(event) => dispatch(setPair(event.target.value))}
       >
         <option value="" disabled>
           ...
@@ -27,7 +30,7 @@ const Select = () => {
       <span style={{ marginLeft: '1rem' }}>Задайте интервал обновления: </span>
       <select
         value={interval}
-        onChange={(event) => setInterval(event.target.value)}
+        onChange={(event) => dispatch(setIntrvl(event.target.value))}
       >
         {optionsInterv
           && optionsInterv.map((option) => (
@@ -36,7 +39,7 @@ const Select = () => {
             </option>
           ))}
       </select>
-      {pair && <OrderBook pair={pair} interval={interval} />}
+      {pair && <OrderBook />}
     </div>
   );
 };
