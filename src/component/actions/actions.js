@@ -10,7 +10,6 @@ export const setIntrvl = (newInt) => ({
   payload: newInt,
 });
 
-
 export const fetchLoad = (bool) => ({
   type: 'FETCH_LOAD',
   payload: bool,
