@@ -1,3 +1,5 @@
+// не стал переносить на useReduce
+// будет нужно, перенесу
 export const setPair = (newPair) => ({
   type: 'SELECT_PAIR',
   payload: newPair,

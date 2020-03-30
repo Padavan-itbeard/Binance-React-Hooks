@@ -5,18 +5,16 @@ import { fetchLoad, fetchError } from '../actions/actions';
 import './OrderBook.css';
 
 const OrderBook = () => {
-  const pair = useSelector((state) => state.pair);
+  const { pair, interval, isLoad, isError, Err } = useSelector((state) => state);
   const currPair = pair.replace(/[/]/g, '');
-  const currencyArray = pair.split('/');
-  const interval = useSelector((state) => state.interval);
-  const isLoad = useSelector((state) => state.isLoad);
-  const isError = useSelector((state) => state.isError);
-  const Err = useSelector((state) => state.Err);
+  const currArray = pair.split('/');
   const dispatch = useDispatch();
   const str = 'https://cors-anywhere.herokuapp.com/';
   const [orders, setOrders] = useState([]);
   let index = 0;
 
+  // на Thunk или Saga`у переносить не вижу смысла
+  // так же могу в промисах then, catch
   useEffect(() => {
     setOrders([]);
     dispatch(fetchLoad(true));
@@ -31,40 +29,56 @@ const OrderBook = () => {
       try {
         const res = await axios.get(url);
         setOrders(res.data);
-        dispatch(fetchLoad(false));
       } catch (error) {
-        dispatch(fetchLoad(false));
         dispatch(
           fetchError({
             isError: true,
             Err: error.message,
           }),
         );
+      } finally {
+        dispatch(fetchLoad(false));
       }
     };
     fetchLoadData();
   }, [pair]);
 
-  // useEffect(() => {
-  //   const ws = new WebSocket(`wss://stream.binance.com:9443/ws/${currencyPair}@depth10@${interval}`);
+  useEffect(() => {
+    // тут вопрос, если снапшот в ошибку вывалился, вебсокеты запускаем?
+    // если нет, то тут просто if (isError)
+    const ws = new WebSocket(`wss://stream.binance.com:9443/ws/${currPair.toLowerCase()}@depth10@${interval}`);
 
-  //   ws.onmessage = (event) => {
-    //     const res = JSON.parse(event.data);
-    //     setOrders(res);
-    //   };
-    //   // Выбивает в ошибку при переходе на др пару или интервал
-    //   // ws.onerror = (error) => {
-      //   //   console.log('error>', error);
-      //   // };
-      //   return () => {
-  //     ws.close();
-  //   };
-  // }, [currencyPair, interval]);
+    ws.onopen = () => {
+      dispatch(
+        fetchError({
+          isError: false,
+          Err: '',
+        }),
+      );
+    };
+    ws.onmessage = (event) => {
+      const res = JSON.parse(event.data);
+      setOrders(res);
+    };
+    // Выбивает в ошибку при переходе на др пару или интервал
+    // пробовал ставить паузу(была мысль, не успевает расконектится)
+    // не помогло
+    ws.onerror = (error) => {
+      dispatch(
+        fetchError({
+          isError: true,
+          Err: error.message,
+        }),
+      );
+    };
+    return () => {
+      ws.close();
+    };
+  }, [currPair, interval]);
 
-  
   const { bids, asks, lastUpdateId } = orders;
   const orderRows = (arr) => arr
-  && arr.map((item) => (
+    && arr.map((item) => (
       <tr key={index++}>
         <td>{item[1]}</td>
         <td>{item[0]}</td>
@@ -79,12 +93,12 @@ const OrderBook = () => {
       <tr>
         <th>
           Amount (
-          {currencyArray[0]}
+          {currArray[0]}
           )
         </th>
         <th>
           Price (
-          {currencyArray[1]}
+          {currArray[1]}
           )
         </th>
       </tr>

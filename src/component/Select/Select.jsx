@@ -6,8 +6,9 @@ import { setIntrvl, setPair } from '../actions/actions';
 const Select = () => {
   const optionsPair = ['ETC/USDT', 'XRP/USDT', 'BTS/USDT'];
   const optionsInterv = ['1000ms', '100ms'];
-  const pair = useSelector((state) => state.pair);
-  const interval = useSelector((state) => state.interval);
+  const { pair, interval } = useSelector((state) => state);
+  // const pair = useSelector((state) => state.pair);
+  // const interval = useSelector((state) => state.interval);
   const dispatch = useDispatch();
 
   return (

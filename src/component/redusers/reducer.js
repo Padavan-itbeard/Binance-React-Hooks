@@ -1,3 +1,5 @@
+// не стал переносить на useReduce
+// будет нужно, перенесу
 const initialState = {
   pair: '',
   interval: '1000ms',
@@ -7,7 +9,6 @@ const initialState = {
 };
 
 export default function reducer(state = initialState, action) {
-  console.log('>>>>>>>>>>>', action);
   switch (action.type) {
     case 'SELECT_PAIR':
       return {
