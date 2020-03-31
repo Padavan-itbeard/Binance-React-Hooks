@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/Binance-React-Hooks/static/css/main.f92d9bf8.chunk.css",
+    "main.js": "/Binance-React-Hooks/static/js/main.9e5bae69.chunk.js",
+    "main.js.map": "/Binance-React-Hooks/static/js/main.9e5bae69.chunk.js.map",
+    "runtime-main.js": "/Binance-React-Hooks/static/js/runtime-main.11996545.js",
+    "runtime-main.js.map": "/Binance-React-Hooks/static/js/runtime-main.11996545.js.map",
+    "static/js/2.9462f683.chunk.js": "/Binance-React-Hooks/static/js/2.9462f683.chunk.js",
+    "static/js/2.9462f683.chunk.js.map": "/Binance-React-Hooks/static/js/2.9462f683.chunk.js.map",
+    "index.html": "/Binance-React-Hooks/index.html",
+    "precache-manifest.75081ff8c41538c778deea5cc84ab8c7.js": "/Binance-React-Hooks/precache-manifest.75081ff8c41538c778deea5cc84ab8c7.js",
+    "service-worker.js": "/Binance-React-Hooks/service-worker.js",
+    "static/css/main.f92d9bf8.chunk.css.map": "/Binance-React-Hooks/static/css/main.f92d9bf8.chunk.css.map",
+    "static/js/2.9462f683.chunk.js.LICENSE.txt": "/Binance-React-Hooks/static/js/2.9462f683.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.11996545.js",
+    "static/js/2.9462f683.chunk.js",
+    "static/css/main.f92d9bf8.chunk.css",
+    "static/js/main.9e5bae69.chunk.js"
+  ]
+}
