@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/Binance-React-Hooks/precache-manifest.75081ff8c41538c778deea5cc84ab8c7.js"
+  "/Binance-React-Hooks/precache-manifest.a4a9011da3d2a229ab121436b6e0cf0c.js"
 );
 
 self.addEventListener('message', (event) => {

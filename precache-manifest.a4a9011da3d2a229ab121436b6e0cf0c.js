@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "2fa0385fe6987bcbff1087908041ff99",
+    "revision": "ce78f0949b37ef577a5de79d072ae8e9",
     "url": "/Binance-React-Hooks/index.html"
   },
   {
-    "revision": "f9a34495d9ce46da3035",
+    "revision": "0760f05a1667b1356324",
     "url": "/Binance-React-Hooks/static/css/main.f92d9bf8.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/Binance-React-Hooks/static/js/2.9462f683.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "f9a34495d9ce46da3035",
-    "url": "/Binance-React-Hooks/static/js/main.9e5bae69.chunk.js"
+    "revision": "0760f05a1667b1356324",
+    "url": "/Binance-React-Hooks/static/js/main.9f1c7ba7.chunk.js"
   },
   {
     "revision": "05d32ac0f55d643f3655",
